@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+    </head>
+    <body>
+
+        <h1>My First Heading</h1>
+
+        <p id="myP"></p>
+        
+        <button onclick="myFunction()">Click</button>
+        
+        <p id="demo">Hello</p>
+
+        <p id="age"></p>
+
+        <script>
+            let x,y,z;
+            x=10,y=3;
+            z=x/y;
+            $("h1").css("color","red");
+            document.getElementById("myP").innerHTML="Sum of "+x+" and "+y+" is "+z;
+            function myFunction(){
+                $("#demo").text("Hello World");
+                $("demo").
+
+            }
+            //$("button").click();
+            //$("button").mouseenter();
+            $("button").mouseleave(function(){
+                alert("bye! now you are leaving");
+            });
+            function sum(a,b){
+                return a+b;
+            }
+            document.getElementById("age").innerHTML=sum(4,5);
+
+        </script>
+    </body>
+</html>

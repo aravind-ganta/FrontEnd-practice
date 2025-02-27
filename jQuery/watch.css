@@ -1,0 +1,13 @@
+#display {
+  font-size: 36px;
+  text-align: center;
+  margin: 50px;
+}
+#buttons {
+  text-align: center;
+}
+button {
+  font-size: 24px;
+  margin: 5px;
+  padding: 10px 20px;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            display: flex; /* This sets the container as a flex container */
+            justify-content: space-between; /* Aligns items along the main axis (horizontally) */
+            align-items: center; /* Aligns items along the cross axis (vertically) */
+            height: 200px; /* Just for visualization */
+            border: 1px solid #ccc; /* Just for visualization */
+            flex-direction: row;
+            width: 500px;
+            
+        }
+
+        .item {
+            flex: 1; /* This makes the items equally distribute available space */
+            text-align: center; /* Center aligns the content within each item */
+            padding: 20px; /* Just for visualization */
+            border: 1px solid #333; /* Just for visualization */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+    </div>
+</body>
+</html>

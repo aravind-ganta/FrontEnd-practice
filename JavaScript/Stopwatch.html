@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stopwatch</title>
+    <link href="watch.css" type="text/css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="display">00:00:00</div>
+    <div id="controls">
+      <button id='start' onclick="start()">Start</button>
+      <button id='pause' onclick="pause()">Pause</button>
+      <button id='reset' onclick="reset()">Reset</button>
+    </div>
+
+    <script>
+      let startTime;
+      let elapsedTime = 0;
+      let timerInterval;
+
+      function start() {
+        document.getElementById("start").disabled = true;
+        startTime = Date.now() - elapsedTime;
+        timerInterval = setInterval(function () {
+          elapsedTime = Date.now() - startTime;
+          updateDisplay();
+        }, 10);
+      }
+
+      function pause() {
+        document.getElementById("start").disabled = false;
+        clearInterval(timerInterval);
+      }
+
+      function reset() {
+        document.getElementById("start").disabled = false;
+        clearInterval(timerInterval);
+        elapsedTime = 0;
+        updateDisplay();
+      }
+
+      function updateDisplay() {
+        const milliseconds = Math.floor(elapsedTime % 1000);
+        const seconds = Math.floor((elapsedTime / 1000) % 60);
+        const minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+        const hours = Math.floor((elapsedTime / (1000 * 60 * 60)) % 24);
+
+        const display = document.getElementById("display");
+        display.textContent = `${format(hours)}:${format(minutes)}:${format(
+          seconds
+        )}.${format(milliseconds, 3)}`;
+      }
+
+      function format(number, width = 2) {
+        return String(number).padStart(width, "0");
+      }
+
+    </script>
+  </body>
+</html>

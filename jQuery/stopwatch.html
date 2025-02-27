@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stopwatch</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="display">00:00:00</div>
+    <div id="buttons">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset">Reset</button>
+    </div>
+    
+    <script>
+        var startTime;
+        var timerInterval;
+
+        function startTimer() {
+            startTime = Date.now();
+            timerInterval = setInterval(updateTimer, 10);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            $('#display').text('00:00:00');
+        }
+
+        function updateTimer() {
+            var currentTime = Date.now() - startTime;
+            var minutes = Math.floor((currentTime / 1000 / 60) % 60);
+            var seconds = Math.floor((currentTime / 1000) % 60);
+            var milliseconds = Math.floor((currentTime % 1000) / 10);
+
+            minutes = (minutes < 10) ? '0' + minutes : minutes;
+            seconds = (seconds < 10) ? '0' + seconds : seconds;
+            milliseconds = (milliseconds < 10) ? '0' + milliseconds : milliseconds;
+
+            $('#display').text(minutes + ':' + seconds + ':' + milliseconds);
+        }
+
+        $(document).ready(function() {
+            $('#start').click(startTimer);
+            $('#stop').click(stopTimer);
+            $('#reset').click(resetTimer);
+        });
+    </script>
+</body>
+</html>

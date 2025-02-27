@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My First Web Page</h2>
+<p>My first paragraph.</p>
+
+<p id="demo">Never call document.write after the document has finished loading.
+It will overwrite the whole document.</p>
+
+<script>
+document.write(5 + 6);
+document.getElementById("demo").innerHTML = 5 + 6;
+window.alert(5 + 6);
+console.log(5 + 6);
+</script>
+
+</body>
+</html> 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+  <style>
+    .completed {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <h1>To-Do List</h1>
+  <input type="text" id="taskInput" placeholder="Enter a task">
+  <button id="addTaskButton">Add Task</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    // Check if there are any tasks in local storage
+    var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+    // Function to render the tasks in the list
+    function renderTasks() {
+      var taskList = document.getElementById('taskList');
+      taskList.innerHTML = '';
+
+      for (var i = 0; i < tasks.length; i++) {
+        var task = tasks[i];
+
+        var li = document.createElement('li');
+        li.textContent = task.title;
+
+        if (task.completed) {
+          li.classList.add('completed');
+        }
+
+        // Add click event to mark a task as completed
+        li.addEventListener('click', function(index) {
+          return function() {
+            tasks[index].completed = !tasks[index].completed;
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTasks();
+          };
+        }(i));
+
+        // Add click event to remove a task
+        li.addEventListener('contextmenu', function(index) {
+          return function(event) {
+            event.preventDefault();
+            tasks.splice(index, 1);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTasks();
+          };
+        }(i));
+
+        taskList.appendChild(li);
+      }
+    }
+
+    // Function to add a new task
+    function addTask() {
+      var input = document.getElementById('taskInput');
+      var title = input.value.trim();
+
+      if (title !== '') {
+        tasks.push({ title: title, completed: false });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        input.value = '';
+        renderTasks();
+      }
+    }
+
+    // Add click event to the "Add Task" button
+    var addTaskButton = document.getElementById('addTaskButton');
+    addTaskButton.addEventListener('click', addTask);
+
+    // Render the tasks initially
+    renderTasks();
+  </script>
+</body>
+</html>

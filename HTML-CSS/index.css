@@ -1,0 +1,16 @@
+p {
+  /* font-family:  Times,  serif,  Arial,  Helvetica,  sans-serif;  */
+  font: 15px Helvetica, sans-serif, Arial;
+  font-size: 15px;
+  font-weight: bold;
+  font-style: italic;
+  /* font-variant: small-caps;  */
+  /* text-align:  center;  */
+  text-decoration: underline;
+  /* letter-spacing:  5px;  */
+  text-transform: lowercase;
+  word-spacing: 8px;
+  text-indent: 20px;
+  line-height: 100%;
+  text-shadow: 4px 4px grey;
+}
